@@ -23,7 +23,7 @@ const UsersCard =({name,last_name,avatar,id,email,onRemove})=>{
   }
 
   const handleDeleteUser=()=>{
-    onRemove()
+    onRemove(id)
   }
 
 
@@ -46,7 +46,7 @@ const UsersCard =({name,last_name,avatar,id,email,onRemove})=>{
         <IconButton onClick={handleCLickButtonModal} aria-label="add to favorites">
           <DeleteIcon />
         </IconButton>
-        <IconButton onClick={handleDeleteUser} aria-label="share">
+        <IconButton  aria-label="share">
           <EditOffTwoToneIcon />
         </IconButton>
       

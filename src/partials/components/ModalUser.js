@@ -9,7 +9,6 @@ import DialogContentText from '@mui/material/DialogContentText'
 const ModalUser =({handleClose,open,handleRemoveUser})=>{
 
 
-
   return(
 
 

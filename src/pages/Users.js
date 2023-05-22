@@ -9,8 +9,8 @@ const Users =()=>{
   const [user,setUser] = useState([])
 
   
-  const handleDeletUser=()=>{
-    alert('oin')
+  const handleDeleteUser=()=>{
+    alert('oinn')
   }
 
 
@@ -41,7 +41,7 @@ const Users =()=>{
           avatar={item.avatar}
           key={item.id}
           id={item.id}
-          onRemove={handleDeletUser}
+          onRemove={handleDeleteUser}
           />
         </Grid>
       ))
