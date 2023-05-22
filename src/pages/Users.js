@@ -8,6 +8,12 @@ const Users =()=>{
 
   const [user,setUser] = useState([])
 
+  
+  const handleDeletUser=()=>{
+    alert('oin')
+  }
+
+
   useEffect(()=>{
     axios("https://reqres.in/api/users")
     .then(resp =>{
@@ -34,7 +40,9 @@ const Users =()=>{
           email={item.email}
           avatar={item.avatar}
           key={item.id}
-          id={item.id} />
+          id={item.id}
+          onRemove={handleDeletUser}
+          />
         </Grid>
       ))
     }

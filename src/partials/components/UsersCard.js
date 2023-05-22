@@ -7,9 +7,24 @@ import IconButton from '@mui/material/IconButton';
 import { red } from '@mui/material/colors';
 import EditOffTwoToneIcon from '@mui/icons-material/EditOffTwoTone';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ModalUser from './ModalUser';
+
+import { useState } from 'react';
+
+const UsersCard =({name,last_name,avatar,id,email,onRemove})=>{
+
+  const [open,setOpen] = useState(false)
 
 
-const UsersCard =({name,last_name,avatar,id,email})=>{
+  const handleCLickButtonModal=()=>{
+
+    setOpen(!open)
+
+  }
+
+  const handleDeleteUser=()=>{
+    onRemove()
+  }
 
 
   return(
@@ -28,16 +43,17 @@ const UsersCard =({name,last_name,avatar,id,email})=>{
       
 
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton onClick={handleCLickButtonModal} aria-label="add to favorites">
           <DeleteIcon />
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton onClick={handleDeleteUser} aria-label="share">
           <EditOffTwoToneIcon />
         </IconButton>
       
       </CardActions>
      
     </Card>
+    <ModalUser open={open} handleClose={handleCLickButtonModal} handleRemoveUser={handleDeleteUser} />
     </>
   )
 }
