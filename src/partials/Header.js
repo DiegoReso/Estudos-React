@@ -25,6 +25,11 @@ const Header =()=>{
   setOpen(!open)
  }
 
+ const handleLogin = route =>{
+  navigate(route)
+ }
+
+
   return(
     
         <Box sx={{ flexGrow: 1 }}>
@@ -43,7 +48,11 @@ const Header =()=>{
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 React
               </Typography>
-              <Button color="inherit">Login</Button>
+              <Button
+                onClick={()=>handleLogin('/login')}
+                color="inherit">
+                Login
+              </Button>
             </Toolbar>
           </AppBar>
           <NavBar open={open} handleToggleMenu={handleToggleMenu} handleCLickMenu={handleChangePage} />

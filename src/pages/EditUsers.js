@@ -42,7 +42,8 @@ const EditUsers=()=>{
         helperText: '',
       },
       job:{
-        value: data.email,
+        //peguei email somente para teste, pois nao tem job nesse teste
+        value: data.email, 
         error: false,
         helperText: '',
       }
@@ -64,6 +65,7 @@ const EditUsers=()=>{
 
 
   const handleRegisterButton =()=>{
+    
 
     let hasError = false
     
@@ -97,18 +99,21 @@ const EditUsers=()=>{
       return setForm(newFormState) 
     }
 
+    setIsLoading(true)
     axios.post('https://reqres.in/api/users',{
       name: form.name.value,
       job: form.job.value,
     })
     .then(() =>{
-
       setOpen(!open)
+      setIsLoading(false)
       
     })
-
+    
+    
   }
 
+  
   
   const handleCloseSnack=()=>{
     setOpen(!open)
@@ -146,6 +151,7 @@ const EditUsers=()=>{
         sx={{mt: '40px'}}
         variant='contained'
         onClick={handleRegisterButton}
+        disabled={isLoading}
         >
           {
             isLoading ? 'Aguarde...' : 'Editar'
