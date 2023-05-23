@@ -4,6 +4,9 @@ import TemplateDefault from "./templates/TemplateDefault";
 import Default from "./templates/Default";
 import Users from "./pages/Users";
 import RegisterUser from "./pages/RegisterUser";
+import EditUsers from "./pages/EditUsers";
+
+
 
 function App() {
   return (
@@ -12,6 +15,8 @@ function App() {
         <Default>
           <Routes>
             
+            <Route path="/users/editregister/:id"  element={<TemplateDefault title="Edit Users" Component={EditUsers}/>}></Route>
+
             <Route path="/users/register"  element={<TemplateDefault title="Register Users" Component={RegisterUser}/>}></Route>
 
             <Route path="/users"  element={<TemplateDefault title="Users" Component={Users}/>}></Route>

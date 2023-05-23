@@ -1,16 +1,15 @@
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardActions from '@mui/material/CardActions'
+import Avatar from '@mui/material/Avatar'
+import IconButton from '@mui/material/IconButton'
+import EditOffTwoToneIcon from '@mui/icons-material/EditOffTwoTone'
+import DeleteIcon from '@mui/icons-material/Delete'
+import ModalUser from './ModalUser'
 
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import EditOffTwoToneIcon from '@mui/icons-material/EditOffTwoTone';
-import DeleteIcon from '@mui/icons-material/Delete';
-import ModalUser from './ModalUser';
+import { useState } from 'react'
 
-import { useState } from 'react';
-
-const UsersCard =({name,last_name,avatar,id,email,onRemove})=>{
+const UsersCard =({name,last_name,avatar,id,email,onRemove,onEdit})=>{
 
   const [open,setOpen] = useState(false)
 
@@ -26,6 +25,11 @@ const UsersCard =({name,last_name,avatar,id,email,onRemove})=>{
   }
 
 
+  const handleEditUser = (id)=> {
+      onEdit(id)
+  }
+
+  
   return(
     <>
 
@@ -45,7 +49,7 @@ const UsersCard =({name,last_name,avatar,id,email,onRemove})=>{
         <IconButton onClick={handleCLickButtonModal} aria-label="add to favorites">
           <DeleteIcon />
         </IconButton>
-        <IconButton  aria-label="share">
+        <IconButton onClick={() =>handleEditUser(id)} aria-label="share">
           <EditOffTwoToneIcon />
         </IconButton>
       

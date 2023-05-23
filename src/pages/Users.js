@@ -2,10 +2,11 @@ import UsersCard from "../components/UsersCard"
 import { useState,useEffect } from "react"
 import axios from "axios"
 import Grid from '@mui/material/Grid'
+import { useNavigate } from "react-router-dom"
 
 const Users =()=>{
 
-
+  const navigate = useNavigate()
   const [user,setUser] = useState([])
 
   
@@ -31,6 +32,12 @@ const Users =()=>{
 
   },[])
 
+
+  const handleEditUser=(id)=>{
+    navigate(`/users/editregister/${id}`)
+  }
+
+
   return(
     <Grid container sx={{mt: '50px'}}>
       
@@ -47,6 +54,7 @@ const Users =()=>{
           key={item.id}
           id={item.id}
           onRemove={handleDeleteUser}
+          onEdit={handleEditUser}
           />
         </Grid>
       ))
