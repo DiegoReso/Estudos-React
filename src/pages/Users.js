@@ -9,8 +9,8 @@ const Users =()=>{
   const [user,setUser] = useState([])
 
   
-  const handleDeleteUser=()=>{
-    alert('oinn')
+  const handleDeleteUser=(id)=>{
+    alert(id)
   }
 
 

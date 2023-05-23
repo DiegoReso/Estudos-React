@@ -4,7 +4,6 @@ import CardHeader from '@mui/material/CardHeader';
 import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import { red } from '@mui/material/colors';
 import EditOffTwoToneIcon from '@mui/icons-material/EditOffTwoTone';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ModalUser from './ModalUser';
@@ -22,7 +21,7 @@ const UsersCard =({name,last_name,avatar,id,email,onRemove})=>{
 
   }
 
-  const handleDeleteUser=()=>{
+  const handleDeleteUser=(id)=>{
     onRemove(id)
   }
 
@@ -33,7 +32,7 @@ const UsersCard =({name,last_name,avatar,id,email,onRemove})=>{
 <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar src={avatar} sx={{ bgcolor: red[500] }} aria-label="recipe">
+          <Avatar src={avatar} aria-label="avatar">
             
           </Avatar>
         }
@@ -53,7 +52,7 @@ const UsersCard =({name,last_name,avatar,id,email,onRemove})=>{
       </CardActions>
      
     </Card>
-    <ModalUser open={open} handleClose={handleCLickButtonModal} handleRemoveUser={handleDeleteUser} />
+    <ModalUser open={open} handleClose={handleCLickButtonModal} handleRemoveUser={()=>handleDeleteUser(id)} />
     </>
   )
 }
