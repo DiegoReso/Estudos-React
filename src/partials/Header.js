@@ -10,7 +10,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 
-const Header =()=>{
+const Header =({user})=>{
 
   const [open,setOpen] =useState(false)
   const navigate = useNavigate()
@@ -48,11 +48,18 @@ const Header =()=>{
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 React
               </Typography>
-              <Button
-                onClick={()=>handleLogin('/login')}
-                color="inherit">
-                Login
-              </Button>
+              
+                {
+                  user.logged
+
+                  ? <Typography variant="h6">{user.email}</Typography>
+
+                  : <Button
+                      onClick={()=>handleLogin('/login')}
+                      color="inherit"> Login
+                    </Button>
+                }  
+              
             </Toolbar>
           </AppBar>
           <NavBar open={open} handleToggleMenu={handleToggleMenu} handleCLickMenu={handleChangePage} />
