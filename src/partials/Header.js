@@ -5,16 +5,34 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu'
-
+import NavBar from './NavBar';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const Header =()=>{
+
+  const [open,setOpen] =useState(false)
+  const navigate = useNavigate()
+
+
+  const handleChangePage =route =>{
+    navigate(route)
+    handleToggleMenu()
+  }
+
+ const handleToggleMenu =()=>{
+  setOpen(!open)
+ }
+
+
   return(
     
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
             <Toolbar>
               <IconButton
+                onClick={handleToggleMenu}
                 size="large"
                 edge="start"
                 color="inherit"
@@ -29,6 +47,7 @@ const Header =()=>{
               <Button color="inherit">Login</Button>
             </Toolbar>
           </AppBar>
+          <NavBar open={open} handleToggleMenu={handleToggleMenu} handleCLickMenu={handleChangePage} />
         </Box>
       );
     }

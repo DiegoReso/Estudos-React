@@ -6,7 +6,7 @@ const Default=({children})=>{
   return(
   <>
     <Header/>
-    <Container>
+    <Container >
       {children}
     </Container>
    

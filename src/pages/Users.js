@@ -1,4 +1,4 @@
-import UsersCard from "../partials/components/UsersCard"
+import UsersCard from "../components/UsersCard"
 import { useState,useEffect } from "react"
 import axios from "axios"
 import Grid from '@mui/material/Grid'
@@ -10,7 +10,12 @@ const Users =()=>{
 
   
   const handleDeleteUser=(id)=>{
-    alert(id)
+    axios.delete(`https://reqres.in/api/users/${id}`)
+    .then(resp =>{
+      const newUser = user.filter(item => item.id !== id)
+
+      setUser(newUser)
+    })
   }
 
 
