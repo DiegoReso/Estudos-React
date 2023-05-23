@@ -1,28 +1,28 @@
+import Snackbars from '../components/SnackBars'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import { useState,useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
 
 const RegisterUser=()=>{
 
+  const [open,setOpen] = useState(false)
 
-const [form,setForm] = useState({
-  name:{
-    value: '',
-    error: false,
-    helperText: '',
-  },
-  job:{
-    value: '',
-    error: false,
-    helperText: '',
-  }
-})
+  const [form,setForm] = useState({
+    name:{
+      value: '',
+      error: false,
+      helperText: '',
+    },
+    job:{
+      value: '',
+      error: false,
+      helperText: '',
+    }
+  })
 
   
-
-
   const handleInputChange = e =>{
     const {name,value} = e.target
     
@@ -43,7 +43,6 @@ const [form,setForm] = useState({
       ...form,
     }
 
-
     if(!form.name.value){
       hasError = true
 
@@ -53,7 +52,6 @@ const [form,setForm] = useState({
         helperText: 'Digite o seu nome',
       }
     }
-
 
 
     if(!form.job.value){
@@ -75,10 +73,16 @@ const [form,setForm] = useState({
       name: form.name.value,
       job: form.job.value,
     })
-    .then(resp =>console.log(resp))
+    .then(() =>{
+
+      setOpen(!open)
+    })
 
   }
 
+  const handleCloseSnack=()=>{
+    setOpen(!open)
+  }
 
   return(
     <>
@@ -115,7 +119,8 @@ const [form,setForm] = useState({
         >
           Registrar
       </Button> 
-
+      
+      <Snackbars open={open} handleClose={handleCloseSnack} />
     </>
   )
 }
