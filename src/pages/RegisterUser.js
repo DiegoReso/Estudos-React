@@ -24,7 +24,7 @@ const RegisterUser=()=>{
         sx={{mt: '40px'}}
         variant='contained'>
           Registrar
-      </Button>
+      </Button> 
 
     </>
   )
